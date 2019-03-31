@@ -14,7 +14,7 @@ artist = [i.text.strip() for i in soup.find_all('div', {'class':'chart-list-item
 data = [rank,title,artist]
 
 with open('billboard.csv', 'w') as f:
-    csv_writer = csv.writer(f,delimiter='\t',quoting=csv.QUOTE_MINIMAL) 
-    header = ("Rank\t\Title\t\t\t\t\t\tArtist")
+    csv_writer = csv.writer(f,delimiter=',',quoting=csv.QUOTE_MINIMAL)
+    csv_writer.writerow(["Rank","Title","Artist"])
     for x in range(100):
-        csv_writer.writerow(data[0][x]+"\t"+data[1][x]+"\t\t\t\t\t\t"+data[2][x])
+        csv_writer.writerow([data[0][x],data[1][x],data[2][x]])
